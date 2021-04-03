@@ -5,12 +5,16 @@
   left: 0;
   width: 20rem;
   height: 100%;
-  box-shadow: 2px 2px 50px gray;
-  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 50px rgb(199, 199, 199);
+  background-color: #ffffff;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.3s ease;
   h2 {
     padding: 2rem;
   }
 }
+
 .library-song {
   display: flex;
   cursor: pointer;
@@ -36,4 +40,8 @@
 
 .selected {
   background-color: rgb(197, 248, 255);
+}
+.active-library {
+  transform: translateX(0%);
+  opacity: 1;
 }
