@@ -62,6 +62,12 @@ Input[type="range"]::-webkit-slider-thumb {
   transform: translateX(0%);
   pointer-events: none;
 }
-a {
-  background-color: linear-gradient(red, black);
+
+@media screen and (max-width: 768px) {
+  .time-control {
+    width: 90%;
+  }
+  .play-control {
+    width: 70%;
+  }
 }
