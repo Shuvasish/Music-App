@@ -51,7 +51,18 @@ function App() {
       return song.id === currentSong.id;
     });
     await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
-    audioRef.current.play();
+    console.log(songs[(currentIndex + 1) % songs.length]);
+    console.log(currentSong);
+    const newSong = songs.map((song) => {
+      if (song.id === currentSong.id) {
+        return { ...song, active: true };
+      } else {
+        return { ...song, active: false };
+      }
+    });
+    console.log(newSong);
+    await setSongs(newSong);
+    await audioRef.current.play();
   };
   return (
     <div className={`App ${libraryStatus ? "library-active" : ""}`}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -23,16 +23,28 @@ function Player({
   // const { audio, color, id, active } = currentSong;
 
   // use Effect
-  useEffect(() => {
+  // useEffect(() => {
+  //   const newSong = songs.map((song) => {
+  //     if (song.id === currentSong.id) {
+  //       return { ...song, active: true };
+  //     } else {
+  //       return { ...song, active: false };
+  //     }
+  //   });
+  //   setSongs(newSong);
+  // }, [currentSong]);
+
+  const activeLibraryHandler = (nextPrev) => {
     const newSong = songs.map((song) => {
-      if (song.id === currentSong.id) {
+      if (song.id === nextPrev.id) {
         return { ...song, active: true };
       } else {
         return { ...song, active: false };
       }
     });
     setSongs(newSong);
-  }, [currentSong]);
+  };
+
   //event handlers
   const playSongHandler = () => {
     if (isPlaying) {
@@ -58,12 +70,15 @@ function Player({
         await setCurrentSong(songs[songs.length - 1]);
         // playSongHandler();
         tractCondition(isPlaying, audioRef);
+        activeLibraryHandler(songs[songs.length - 1]);
         return;
       }
       await setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+      activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
     }
     if (direction === "skip-forward") {
       await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+      activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
       // playSongHandler();
     }
     tractCondition(isPlaying, audioRef);
