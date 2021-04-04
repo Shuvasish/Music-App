@@ -44,6 +44,14 @@ Input[type="range"]::-webkit-slider-thumb {
   // background-color: black;
   // border-radius: 50%;
 }
+Input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+
+  // background-color: black;
+  // border-radius: 50%;
+}
 .track {
   width: 100%;
   height: 1rem;
